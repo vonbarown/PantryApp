@@ -42,9 +42,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-
-// app.use('/', checkAuth)
-app.use("/", indexRouter);
+const {checkAuth} = require('./auth/firebase')
+app.use("/", checkAuth, indexRouter);
 app.use("/users", usersRouter);
 app.use("/receipts", receiptsRouter);
 app.use("/auth", authRouter);
