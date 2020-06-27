@@ -5,6 +5,17 @@
 This is the primary repo for the Pantry app. All Contributions must follow the [ Organization-Standards
 ](https://github.com/pantry-jvm/Organization-Standards).
 
+# Pantry App
+
+_This is a [React Native app](https://reactnative.dev/) that helps people track their food inventory, which we call **Pantry**, by scanning your grocery receipts to know whats in stock and what's not inorder to make your next grocery shopping a breeze._
+
+# Team
+
+- [Voniel Brown](https://www.linkedin.com/in/vonielbrown/)
+- [Jenesh Napit](https://www.linkedin.com/in/jeneshnapit/)
+- [Michael Amparo](https://www.linkedin.com/in/michaeldamparo/)
+
+
 ## About
 
 This is a [React Native app](https://reactnative.dev/) that helps people track their food inventory, which we call **Pantry**, by scanning your grocery receipts to know whats in stock and what's not inorder to make your next grocery shopping a breeze.
