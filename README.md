@@ -8,11 +8,6 @@ _This is a [React Native app](https://reactnative.dev/) that helps people track 
 - [Jenesh Napit](https://www.linkedin.com/in/jeneshnapit/)
 - [Michael Amparo](https://www.linkedin.com/in/michaeldamparo/)
 
-
-## About
-
-This is a [React Native app](https://reactnative.dev/) that helps people track their food inventory, which we call **Pantry**, by scanning your grocery receipts to know whats in stock and what's not inorder to make your next grocery shopping a breeze.
-
 ## 🚨 Setting up your enviroment 🚨
 
 - Follow the [React Native](https://reactnative.dev/docs/environment-setup) setup docs
