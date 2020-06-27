@@ -1,6 +1,6 @@
 import React from 'react';
-import { Picker } from 'react-native';
-// import Picker from '@react-native-community/picker';
+// import { Picker } from 'react-native';
+import { Picker } from '@react-native-community/picker';
 import styles from './styles.ts';
 
 interface Stores {
@@ -23,6 +23,7 @@ const StorePicker = ({ stores, selected, handleStoreChange }: Props) => {
 
   return (
     <Picker
+      accessibilityLabel="store"
       selectedValue={selected}
       onValueChange={(itemValue, itemIndex) => handleStoreChange(itemValue)}
       style={styles.picker}

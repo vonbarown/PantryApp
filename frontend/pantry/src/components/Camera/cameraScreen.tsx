@@ -5,24 +5,26 @@ import { Slider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from 'react-redux';
 import vision from '@react-native-firebase/ml-vision';
-import { barcodeApiCalls } from '../../redux/actions/cameraActions.ts';
+import Toast from 'react-native-simple-toast';
+import {
+  barcodeApiCalls,
+  setError,
+} from '../../redux/actions/cameraActions.ts';
 
 import { styles, colors } from './cameraStyles.ts';
 
-const Camera = ({ navigation, modalVisible }: any) => {
+const Camera = ({ route, navigation, modalVisible }: any) => {
   const camera: any = useSelector((state: any) => state.camera);
   const receipt: any = useSelector(
     (state: any) => state.recog.receipt.receiptItems,
   );
 
-  const [title, setTitle] = useState('');
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (camera.products.length) {
-      let last: number = camera.products.length - 1;
-      setTitle(camera.products[last].name);
+    if (camera.errorMessage.length) {
+      // Toast.showWithGravity(`Item not found`, Toast.SHORT, Toast.TOP);
+      console.log(...camera.errorMessage);
     }
   }, [dispatch, camera]);
 
@@ -56,14 +58,27 @@ const Camera = ({ navigation, modalVisible }: any) => {
           console.log('bar', barcodes);
           dispatch(barcodeApiCalls(barcodes[0].rawValue)); // redux action to searching product based on barcode
         } else {
-          navigation.navigate('Parsed', {
-            localUriPath: uri,
-          });
+          // navigation.navigate('Parsed', {
+          //   localUriPath: uri,
+          // });
+          dispatch(setError(`Item not found`));
         }
       }
     } catch (e) {
       console.warn(e);
     }
+  };
+
+  const cameraNavigation = () => {
+    const { fromCart } = route.params;
+    let navRoute = '';
+    if (fromCart) {
+      navRoute = navigation.navigate('Cart');
+    } else {
+      navRoute = navigation.navigate('ShoppingCart', { screen: 'Cart' });
+    }
+
+    return navRoute;
   };
 
   // adding scanned product to item confirmation screen
@@ -132,7 +147,7 @@ const Camera = ({ navigation, modalVisible }: any) => {
 
                 modalVisible // checking the parent component
                   ? constructReceiptObj()
-                  : navigation.navigate('Cart');
+                  : cameraNavigation();
               }}
             />
           ) : null}

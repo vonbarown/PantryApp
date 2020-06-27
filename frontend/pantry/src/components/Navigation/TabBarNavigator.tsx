@@ -4,7 +4,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import NetInfo from '@react-native-community/netinfo';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import UploadStack from './UploadStack.tsx';
 // import SettingsStack from './SettingsStack.tsx';
@@ -20,8 +20,6 @@ import {
 const Tab = createBottomTabNavigator();
 
 const TabBarNavigator = (props: any) => {
-  const netConnection: any = useSelector((state: any) => state.appReducer);
-
   const dispatch = useDispatch();
 
   // checking the user connected to a network
@@ -49,10 +47,10 @@ const TabBarNavigator = (props: any) => {
             tabBarIcon: ({ focused, color, size }) => {
               let iconConfig = {
                 Pantry: { name: 'shopping-bag', size: size * 1.25 },
-                Cart: { name: 'shopping-cart', size: size * 1.25 },
+                ShoppingCart: { name: 'shopping-cart', size: size * 1.25 },
                 Upload: { name: 'plus-circle', size: size * 2 },
                 List: { name: 'list', size: size * 1.25 },
-                Settings: { name: 'settings', size: size * 1.25 },
+                Dashboard: { name: 'settings', size: size * 1.25 },
               };
               let icon = iconConfig[route.name];
               return (
@@ -76,10 +74,10 @@ const TabBarNavigator = (props: any) => {
               borderTopWidth: 0,
             },
           }}>
-          <Tab.Screen name="Settings" component={DashboardStack} />
+          <Tab.Screen name="Dashboard" component={DashboardStack} />
           <Tab.Screen name="Pantry" component={PantryStack} />
           <Tab.Screen name="Upload" component={UploadStack} />
-          <Tab.Screen name="Cart" component={ShopCartStack} />
+          <Tab.Screen name="ShoppingCart" component={ShopCartStack} />
           <Tab.Screen name="List" component={ShoppingListStack} />
         </Tab.Navigator>
       </NavigationContainer>

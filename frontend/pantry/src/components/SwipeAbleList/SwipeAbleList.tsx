@@ -37,7 +37,7 @@ class List extends React.Component {
         <Item
           setTitle={this.setTitle}
           isEditing={this.state.isEditing}
-          img={item.image}
+          img={item.image[0]}
           key={item.upc}
           swipingCheck={(swiping: boolean) => this.setState({ swiping })}
           message={item.name}
@@ -47,7 +47,7 @@ class List extends React.Component {
             uploadScannedItem(item);
             this.cleanFromScreen(item.upc);
           }}
-          deleteButtonPressed={() => console.log('delete button pressed')}
+          deleteButtonPressed={() => this.cleanFromScreen(item.upc)}
           editButtonPressed={() => this.setState({ isEditing: true })}
         />
       );
@@ -58,7 +58,9 @@ class List extends React.Component {
     console.log('swipe props', this.props.data);
 
     return (
-      <ScrollView scrollEnabled={!this.state.swiping}>
+      <ScrollView
+        scrollEnabled={!this.state.swiping}
+        style={{ height: '100%' }}>
         {this.renderItems()}
       </ScrollView>
     );
