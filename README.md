@@ -1,6 +1,6 @@
 ## Pantry
 
-_Pantry is a [React Native app](https://reactnative.dev/) application that allows users to record all the items that they have purchased. Upon purchase, users are able to scan the item's barcode to add them to their own virtual pantry.._
+_Pantry is a [React Native app](https://reactnative.dev/) application that allows users to record all the items that they have purchased. Upon purchase, users are able to scan the item's barcode to add them to their own virtual pantry._
 
 # Team
 
